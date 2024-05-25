@@ -16,8 +16,11 @@
  * @param username The username of the input to be censored.
  * @param prefix The censor character, default value is '*' as string.
  */
-
 export function censoredUsername(username: string, prefix: string = "*"): string {
+
+    /** validate input not empty */
+    if (!username || username.length <= 3 || typeof username !== "string") return username;
+
     // A list of vowels and uppercase vowels used for checking the sensitivity level of a given string.
     const sensitivityList = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
 

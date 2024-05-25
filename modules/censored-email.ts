@@ -16,12 +16,16 @@
  * @param email The email of the input to be censored.
  * @param prefix The censor character, default value is '*' as string.
  */
-
-/**
-
- */
-
 export function censoredEmail(email: string, prefix: string = '*'): string {
+
+    /** validate input not empty */
+    if (!email || typeof email !== "string") return email;
+
+    /** validate if the email is not a valid email */
+    if (!email.includes('@')) {
+        return 'Invalid email address';
+    }
+
     /** store splitted email by @ symbol. */
     const [localPart, domainPart] = email.split('@');
 
