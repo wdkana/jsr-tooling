@@ -21,13 +21,14 @@ export function censoredEmail(email: string, prefix: string = '*'): string {
     /** validate input not empty */
     if (!email || typeof email !== "string") return email;
 
-    /** validate if the email is not a valid email */
-    if (!email.includes('@')) {
-        return 'Invalid email address';
-    }
-
     /** store splitted email by @ symbol. */
     const [localPart, domainPart] = email.split('@');
+
+
+    /** validate if the email is not a valid email */
+    if (!domainPart) {
+        return 'Invalid email address';
+    }
 
     /** validate if the email length is not great to be censored */
     if (localPart.length <= 2) {
